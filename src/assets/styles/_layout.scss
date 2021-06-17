@@ -16,3 +16,16 @@
     padding: 0 16rem;
   }
 }
+
+.header-layout{
+  padding: 0 0.5rem;
+  @include for-mobile-up {
+    padding: 0 1rem;
+  }
+  @include for-tablet-up {
+    padding: 0 2rem;
+  }
+  @include for-desktop-sm-up {
+    padding: 0 4rem;
+  }
+}
