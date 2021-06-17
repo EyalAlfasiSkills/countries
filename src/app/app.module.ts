@@ -3,10 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { CountriesListComponent } from './components/countries-list/countries-list.component';
+import { CountryPreviewComponent } from './components/country-preview/country-preview.component';
+import { CountriesPageComponent } from './pages/countries-page/countries-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    CountriesListComponent,
+    CountryPreviewComponent,
+    CountriesPageComponent
   ],
   imports: [
     BrowserModule,
