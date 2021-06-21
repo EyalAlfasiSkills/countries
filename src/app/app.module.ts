@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { CountriesListComponent } from './components/countries-list/countries-list.component';
 import { CountryPreviewComponent } from './components/country-preview/country-preview.component';
 import { CountriesPageComponent } from './pages/countries-page/countries-page.component';
+import { FormsModule } from '@angular/forms';
+import { CountryNameFilterPipe } from './pipes/country-name-filter/country-name-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -14,12 +16,14 @@ import { CountriesPageComponent } from './pages/countries-page/countries-page.co
     HeaderComponent,
     CountriesListComponent,
     CountryPreviewComponent,
-    CountriesPageComponent
+    CountriesPageComponent,
+    CountryNameFilterPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

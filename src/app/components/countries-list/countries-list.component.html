@@ -2,6 +2,6 @@
   <app-country-preview
     *ngFor="let country of countries"
     [country]="country"
-    [onDeleteCountry]="onDeleteCountry"
+    (deleteCountry)="onDeleteCountry($event)"
   ></app-country-preview>
 </ul>

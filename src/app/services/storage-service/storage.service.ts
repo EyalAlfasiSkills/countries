@@ -3,16 +3,16 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class StorageService {
+export class StorageService<T> {
 
   constructor() { }
 
-  save(key: string, entity: any) {
+  save(key: string, entity: T) {
     localStorage.setItem(key, JSON.stringify(entity))
     return entity
   }
 
-  load(key: string) {
+  load(key: string):T {
     const entity: string | null = localStorage.getItem(key)
     return entity ? JSON.parse(entity) : null
   }

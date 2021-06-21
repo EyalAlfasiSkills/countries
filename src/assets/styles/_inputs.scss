@@ -1,0 +1,12 @@
+.custom-input {
+  border: none;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.2s ease;
+  &:focus {
+    border: solid 2px $secondary;
+    color: $secondary;
+    box-shadow: 0 0 10px 0 $secondary;
+  }
+}

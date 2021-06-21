@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-countries-list',
@@ -8,16 +9,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CountriesListComponent implements OnInit {
 
   @Input() countries = null
-  @Input() onDeleteCountry!: Function;
+  @Output() deleteCountry: EventEmitter<any> = new EventEmitter()
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onDelete(numericCode: string): void {
-    console.log(numericCode);
-
+  onDeleteCountry = (event: string): void => {
+    this.deleteCountry.emit(event)
   }
-
 }

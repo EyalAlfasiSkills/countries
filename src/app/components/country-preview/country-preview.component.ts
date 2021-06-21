@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Country } from 'src/app/services/country-service/country';
 
 @Component({
@@ -9,11 +9,15 @@ import { Country } from 'src/app/services/country-service/country';
 export class CountryPreviewComponent implements OnInit {
 
   @Input() country!: Country
-  @Input() onDeleteCountry!: Function
+  @Output() deleteCountry: EventEmitter<any> = new EventEmitter()
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onDeleteCountry = (): void => {
+    this.deleteCountry.emit(this.country.numericCode)
   }
 
 }

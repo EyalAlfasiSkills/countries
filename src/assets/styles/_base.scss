@@ -36,3 +36,10 @@ a {
 img {
   width: 100%;
 }
+
+input,
+textarea {
+  &:focus {
+    outline: none;
+  }
+}

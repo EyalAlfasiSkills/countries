@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Country } from 'src/app/services/country-service/country';
 import { CountryService } from 'src/app/services/country-service/country.service';
 
@@ -12,16 +13,28 @@ export class CountriesPageComponent implements OnInit {
   constructor(private countryService: CountryService) {
   }
 
-  countries: any
+  countries: Country[] = []
+  searchWord: string = ''
 
   ngOnInit(): void {
-    this.countryService.query()
-    this.countryService.countries?.subscribe(countries => {
-      this.countries = countries;
-      this.countryService.saveCountries(countries)
-    }, (err) => {
-      console.log('Couldn\'t fetch countries' + err);
+    this.initializeCountries()
+  }
+
+  get countriesForDisplay(): any {
+    const filteredCountries: Country[] = this.countries.filter((country: Country) => {
+      return country.name.toLowerCase().includes(this.searchWord.toLowerCase())
     })
+    return filteredCountries
+  }
+
+  initializeCountries(): void {
+    this.countryService.getCountries()
+      .subscribe(countries => {
+        this.countries = countries;
+        this.countryService.saveCountries(countries)
+      }, (err) => {
+        console.log('Couldn\'t fetch countries' + err);
+      })
   }
 
   onDeleteCountry = (numericCode: number | string): void => {
@@ -31,6 +44,6 @@ export class CountriesPageComponent implements OnInit {
   }
 
   onReloadCountries = () => {
-    this.countries = this.countryService.loadCountries()
+    this.countries = this.countryService.reloadCountries()
   }
 }
