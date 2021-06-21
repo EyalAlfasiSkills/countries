@@ -1,0 +1,27 @@
+@import "../../../styles.scss";
+
+.countries-page-wrapper {
+  padding-top: 125px;
+
+  & .reload-btn {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $white;
+    gap: 5px;
+    background-color: $secondary;
+    margin: 0 auto 25px;
+    transition: background 0.2s ease;
+    font-size: 1.2rem;
+    font-weight: 300;
+    &:hover {
+      background-color: $secondarylight;
+    }
+    & img {
+      max-width: 30px;
+    }
+  }
+}

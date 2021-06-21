@@ -2,9 +2,15 @@
 
 .app-header {
   background-color: $lightgrey;
+  box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.25);
   min-height: 75px;
   display: flex;
   align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
   justify-content: space-between;
 
   & .logo {

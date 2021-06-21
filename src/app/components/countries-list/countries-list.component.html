@@ -1,1 +1,7 @@
-<p>countries-list works!</p>
+<ul class="countries-list">
+  <app-country-preview
+    *ngFor="let country of countries"
+    [country]="country"
+    [onDeleteCountry]="onDeleteCountry"
+  ></app-country-preview>
+</ul>

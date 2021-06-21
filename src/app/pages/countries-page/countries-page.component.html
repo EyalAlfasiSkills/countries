@@ -1,1 +1,11 @@
-<p>countries-page works!</p>
+<div class="countries-page-wrapper main-layout">
+  <button class="reload-btn" (click)="onReloadCountries()">
+    <span>reload</span>
+    <img src="../../../assets/img/reload-icon.svg" alt="reload icon" />
+  </button>
+  <app-countries-list
+    *ngIf="countries"
+    [countries]="countries"
+    [onDeleteCountry]="onDeleteCountry"
+  ></app-countries-list>
+</div>
