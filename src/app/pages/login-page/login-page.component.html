@@ -1,0 +1,16 @@
+<div class="wrapper main-layout">
+  <form (submit)="onSubmit($event)">
+    <h2><b>Hello,</b> welcome back</h2>
+    <input
+      class="custom-input"
+      placeholder="Email"
+      type="email"
+      name="email"
+      [(ngModel)]="email"
+    />
+    <div class="error-container">
+      <h4 *ngIf="errorMsg">{{ errorMsg }}</h4>
+    </div>
+    <button type="submit">Log in</button>
+  </form>
+</div>

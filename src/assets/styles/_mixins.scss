@@ -83,3 +83,20 @@
     scrollbar-track-color: $background-color;
   }
 }
+
+@mixin custom-button(
+  $background-color,
+  $hover-color: mix($background-color, white, 75%)
+) {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: $white;
+  background-color: $background-color;
+  transition: background 0.2s ease;
+  font-size: 1.2rem;
+  font-weight: 300;
+  &:hover {
+    background-color: $hover-color;
+  }
+}

@@ -12,8 +12,12 @@ export class StorageService<T> {
     return entity
   }
 
-  load(key: string):T {
+  load(key: string): T {
     const entity: string | null = localStorage.getItem(key)
     return entity ? JSON.parse(entity) : null
+  }
+
+  remove(key: string) {
+    localStorage.removeItem(key)
   }
 }
