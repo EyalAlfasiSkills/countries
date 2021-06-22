@@ -9,7 +9,7 @@ import { Country } from 'src/app/services/country-service/country';
 export class CountryPreviewComponent implements OnInit {
 
   @Input() country!: Country
-  @Output() deleteCountry: EventEmitter<any> = new EventEmitter()
+  @Output() deleteCountry: EventEmitter<string | number> = new EventEmitter()
 
   constructor() { }
 

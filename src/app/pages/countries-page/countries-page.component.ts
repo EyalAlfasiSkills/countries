@@ -20,7 +20,7 @@ export class CountriesPageComponent implements OnInit {
     this.initializeCountries()
   }
 
-  get countriesForDisplay(): any {
+  get countriesForDisplay(): Country[] {
     const filteredCountries: Country[] = this.countries.filter((country: Country) => {
       return country.name.toLowerCase().includes(this.searchWord.toLowerCase())
     })

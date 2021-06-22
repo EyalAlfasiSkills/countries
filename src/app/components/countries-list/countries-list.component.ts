@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Country } from 'src/app/services/country-service/country';
 
 @Component({
   selector: 'app-countries-list',
@@ -8,15 +9,15 @@ import { EventEmitter } from '@angular/core';
 })
 export class CountriesListComponent implements OnInit {
 
-  @Input() countries = null
-  @Output() deleteCountry: EventEmitter<any> = new EventEmitter()
+  @Input() countries: Country[] = []
+  @Output() deleteCountry: EventEmitter<string | number> = new EventEmitter()
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onDeleteCountry = (event: string): void => {
+  onDeleteCountry = (event: string | number): void => {
     this.deleteCountry.emit(event)
   }
 }
