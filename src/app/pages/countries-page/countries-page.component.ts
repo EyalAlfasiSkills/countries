@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { Country } from 'src/app/services/country-service/country';
 import { CountryService } from 'src/app/services/country-service/country.service';
 
@@ -31,7 +30,6 @@ export class CountriesPageComponent implements OnInit {
     this.countryService.getCountries()
       .subscribe(countries => {
         this.countries = countries;
-        this.countryService.saveCountries(countries)
       }, (err) => {
         console.log('Couldn\'t fetch countries' + err);
       })
