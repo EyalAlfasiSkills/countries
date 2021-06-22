@@ -21,4 +21,8 @@ export class UserService {
     this.storage.remove(this.STORAGE_KEY)
   }
 
+  getLoggedInUser() {
+    return this.storage.load(this.STORAGE_KEY)
+  }
+
 }
