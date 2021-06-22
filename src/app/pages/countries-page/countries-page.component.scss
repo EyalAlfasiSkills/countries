@@ -1,0 +1,34 @@
+@import "../../../styles.scss";
+
+.countries-page-wrapper {
+  padding-top: 125px;
+  & .top-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    min-height: 75px;
+    flex-wrap: wrap;
+    & .reload-btn {
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: $white;
+      gap: 5px;
+      background-color: $secondary;
+      transition: background 0.2s ease;
+      font-size: 1.2rem;
+      font-weight: 300;
+      &:hover {
+        background-color: $secondarylight;
+      }
+      & img {
+        max-width: 30px;
+      }
+    }
+  }
+}

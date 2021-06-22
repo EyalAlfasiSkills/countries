@@ -1,1 +1,14 @@
-<p>countries-page works!</p>
+<div class="countries-page-wrapper main-layout">
+  <div class="top-section">
+    <button class="reload-btn" (click)="onReloadCountries()">
+      <span>reload</span>
+      <img src="../../../assets/img/reload-icon.svg" alt="reload icon" />
+    </button>
+    <input type="text" [(ngModel)]="searchWord" class="custom-input" placeholder="Search a country..."/>
+  </div>
+  <app-countries-list
+    *ngIf="countries.length"
+    [countries]="countriesForDisplay"
+    (deleteCountry)="onDeleteCountry($event)"
+  ></app-countries-list>
+</div>
