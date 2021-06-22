@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from '../storage-service/storage.service';
 import { Country } from './country';
-import { filter } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,8 @@ export class CountryService {
     this.countries$ = null
   }
 
-  getCountries(searchWord: string = ''): Observable<Country[]> {
-    return this.http.get<Country[]>(this.BASE_URL)
+  getCountries(): Observable<Country[]> {
+    return this.http.get<Country[]>(this.BASE_URL).pipe(take(1))
   }
 
   saveCountries(countries: Country[]) {
