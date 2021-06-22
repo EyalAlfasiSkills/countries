@@ -8,7 +8,7 @@ import { CountriesListComponent } from './components/countries-list/countries-li
 import { CountryPreviewComponent } from './components/country-preview/country-preview.component';
 import { CountriesPageComponent } from './pages/countries-page/countries-page.component';
 import { FormsModule } from '@angular/forms';
-import { CountryNameFilterPipe } from './pipes/country-name-filter/country-name-filter.pipe';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { CountryNameFilterPipe } from './pipes/country-name-filter/country-name-
     CountriesListComponent,
     CountryPreviewComponent,
     CountriesPageComponent,
-    CountryNameFilterPipe,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

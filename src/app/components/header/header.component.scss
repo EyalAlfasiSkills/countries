@@ -1,4 +1,4 @@
-@import "../../../assets/styles/variables.scss";
+@import "../../../styles.scss";
 
 .app-header {
   background-color: $lightgrey;
@@ -24,5 +24,9 @@
       font-weight: 900;
       font-size: 3rem;
     }
+  }
+
+  & button {
+    @include custom-button($secondary);
   }
 }
