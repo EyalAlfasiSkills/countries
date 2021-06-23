@@ -12,7 +12,7 @@ export class UserService {
   ) {
   }
 
-  isAuthenticated$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(Boolean(this.getLoggedInUser()))
+  isAuthenticated$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
   private STORAGE_KEY = 'LOGGED_IN_USER';
 

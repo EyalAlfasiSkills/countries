@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
 import { UserService } from '../user-service/user.service';
 
 @Injectable({
@@ -12,7 +10,8 @@ export class AuthGuardService {
     private userService: UserService,
   ) { }
 
-  canActivate(): Observable<boolean> {
-    return this.userService.isAuthenticated$.pipe(take(1));
+  canActivate(): boolean {
+    return this.userService.isAuthenticated$.getValue();
   }
+
 }

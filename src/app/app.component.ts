@@ -18,6 +18,10 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    const loggedInUser = this.userService.getLoggedInUser()
+    if (loggedInUser) {
+      this.userService.setIsAuthenticated(true)
+    }
     this.authListener()
   }
 

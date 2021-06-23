@@ -11,7 +11,8 @@ import { take, tap } from 'rxjs/operators';
 export class CountryService {
 
   private BASE_URL = 'https://restcountries.eu/rest/v2/all';
-  private STORAGE_KEY = 'COUNTRIES_DB';
+  private COUNTRIES_KEY = 'COUNTRIES_DB';
+  private FAVORITE_COUNTRIES_KEY = 'FAVORITE_COUNTRIES_DB';
 
   constructor(
     private http: HttpClient,
@@ -27,10 +28,10 @@ export class CountryService {
   }
 
   saveCountries(countries: Country[]) {
-    this.storage.save(this.STORAGE_KEY, countries)
+    this.storage.save(this.COUNTRIES_KEY, countries)
   }
 
   reloadCountries() {
-    return this.storage.load(this.STORAGE_KEY)
+    return this.storage.load(this.COUNTRIES_KEY)
   }
 }
