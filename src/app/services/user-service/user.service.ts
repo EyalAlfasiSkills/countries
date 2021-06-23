@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { StorageService } from '../storage-service/storage.service';
 
 @Injectable({
@@ -12,7 +12,8 @@ export class UserService {
   ) {
   }
 
-  isAuthenticated$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  private isAuthenticatedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable()
 
   private STORAGE_KEY = 'LOGGED_IN_USER';
 
@@ -26,9 +27,8 @@ export class UserService {
     this.setIsAuthenticated(false)
   }
 
-
   setIsAuthenticated(isAuthenticated: boolean): void {
-    this.isAuthenticated$.next(isAuthenticated)
+    this.isAuthenticatedSubject.next(isAuthenticated)
   }
 
   getLoggedInUser() {

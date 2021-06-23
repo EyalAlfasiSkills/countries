@@ -100,3 +100,18 @@
     background-color: $hover-color;
   }
 }
+
+@mixin fancy-underline($background-color) {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    right: 0;
+    left: 0;
+    width: 0;
+    transition: width 0.2s ease;
+    background-color: $background-color;
+  }
+}

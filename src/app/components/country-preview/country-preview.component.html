@@ -1,10 +1,14 @@
-<!-- <li class="country-preview"> -->
+<div class="icon-btns" *ngIf="areActionsEnabled">
   <img
-      src="../../../assets/img/delete-icon.svg"
-      alt="delete-icon"
-      class="delete-icon"
-      (click)="onDeleteCountry()"
-    />
-    <img [src]="country.flag" alt="flag" class="flag" />
-    <h3 class="name">{{ country.name }}</h3>
-<!-- </li> -->
+    src="../../../assets/img/delete-icon.svg"
+    alt="delete-icon"
+    (click)="onDeleteCountry()"
+  />
+  <img
+    src="../../../assets/img/heart-icon.svg"
+    alt="delete-icon"
+    (click)="onSaveCountry()"
+  />
+</div>
+<img [src]="country.flag" alt="flag" class="flag" />
+<h3 class="name">{{ country.name }}</h3>
