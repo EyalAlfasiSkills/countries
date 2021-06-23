@@ -27,7 +27,8 @@ export class CountriesPageComponent implements OnInit {
   }
 
   initializeCountries(): void {
-    this.countryService.getCountries()
+    this.countryService.loadCountries()
+    this.countryService.countries$
       .subscribe(countries => {
         this.countries = countries;
       }, (err) => {
@@ -36,12 +37,10 @@ export class CountriesPageComponent implements OnInit {
   }
 
   onDeleteCountry = (numericCode: number | string): void => {
-    this.countries = this.countries.filter((country: Country) => {
-      return country.numericCode !== numericCode
-    })
+    this.countryService.deleteCountry(numericCode)
   }
 
   onReloadCountries = () => {
-    this.countries = this.countryService.reloadCountries()
+    this.countryService.fetchCountries()
   }
 }

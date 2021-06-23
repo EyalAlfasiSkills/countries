@@ -26,7 +26,79 @@
     }
   }
 
+  & .header-actions {
+    display: flex;
+
+    & nav {
+      position: fixed;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 50px;
+      background-color: $white;
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
+
+      @include for-desktop-sm-up {
+        position: unset;
+        transform: unset;
+        bottom: unset;
+        left: unset;
+        background-color: unset;
+        border-radius: unset;
+        box-shadow: unset;
+        margin-right: 48px;
+        overflow: unset;
+      }
+      & > ul {
+        height: 100%;
+        display: flex;
+        & li {
+          height: 100%;
+          &:not(:first-child) {
+            margin-left: 2px;
+            @include for-desktop-sm-up {
+              margin-left: 24px;
+            }
+          }
+
+          & a {
+            display: inline-block;
+            height: 100%;
+            padding: 5px 0;
+            min-width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 300;
+            @include fancy-underline($secondary);
+            &:not(.active-nav-link):hover {
+              &::after {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   & button {
     @include custom-button($secondary);
+  }
+}
+
+.active-nav-link {
+  background-color: $secondary;
+  color: $white;
+  @include for-desktop-sm-up {
+    background-color: unset;
+    color: unset;
+    @include fancy-underline($secondary);
+    &::after {
+      width: 100% !important;
+    }
   }
 }

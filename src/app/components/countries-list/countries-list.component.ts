@@ -11,6 +11,7 @@ export class CountriesListComponent implements OnInit {
 
   @Input() countries: Country[] = []
   @Output() deleteCountry: EventEmitter<string | number> = new EventEmitter()
+  @Input() areActionsEnabled: boolean = true
 
   constructor() { }
 

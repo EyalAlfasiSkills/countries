@@ -10,29 +10,36 @@
   position: relative;
   border-radius: 5px 5px 25px 25px;
 
-  & img.delete-icon {
+  & .icon-btns{
     position: absolute;
     top: 10px;
     right: 10px;
-    max-width: 40px;
-    max-height: 40px;
-    background-color: $white;
-    border-radius: 50%;
     padding: 5px;
-    box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.25);
-
+    display: flex;
+    transition: opacity 0.2s ease;
+    & img{
+      background-color: $white;
+      border-radius: 50%;
+      box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.25);
+      padding: 5px;
+      max-width: 40px;
+      max-height: 40px;
+      transition: background 0.2s ease;
+      &:not(:first-child){
+        margin-left: 10px;
+      }
+}
     @include for-mobile-up {
       opacity: 0;
-      transition: opacity 0.2s ease, background 0.2s ease;
       cursor: pointer;
-      &:hover {
+      & img:hover{
         background-color: $grey;
       }
     }
   }
   @include for-mobile-up {
     &:hover {
-      & img.delete-icon {
+      & .icon-btns {
         opacity: 1;
       }
     }

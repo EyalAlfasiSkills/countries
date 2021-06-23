@@ -1,0 +1,8 @@
+<div class="main-layout">
+  <h2 class="title">Maximum 5 countries can be saved</h2>
+  <app-countries-list
+    *ngIf="countries.length"
+    [countries]="countries"
+    [areActionsEnabled]="false"
+  ></app-countries-list>
+</div>

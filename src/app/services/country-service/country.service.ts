@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { StorageService } from '../storage-service/storage.service';
 import { Country } from './country';
 import { take, tap } from 'rxjs/operators';
@@ -11,8 +11,7 @@ import { take, tap } from 'rxjs/operators';
 export class CountryService {
 
   private BASE_URL = 'https://restcountries.eu/rest/v2/all';
-  private COUNTRIES_KEY = 'COUNTRIES_DB';
-  private FAVORITE_COUNTRIES_KEY = 'FAVORITE_COUNTRIES_DB';
+  private STORAGE_KEY = 'COUNTRIES_DB';
 
   constructor(
     private http: HttpClient,
@@ -20,18 +19,41 @@ export class CountryService {
   ) {
   }
 
-  getCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>(this.BASE_URL).pipe(
-      tap((x) => this.saveCountries(x)),
-      take(1)
-    )
+  private countriesSubject: BehaviorSubject<Country[]> = new BehaviorSubject<Country[]>([])
+  public countries$: Observable<Country[]> = this.countriesSubject.asObservable()
+
+  loadCountries(): void {
+    const savedCountries: Country[] = this.getCountriesFromStorage()
+    if (savedCountries) {
+      this.countriesSubject.next(savedCountries)
+    }
+    else {
+      this.fetchCountries()
+    }
+  }
+
+  fetchCountries() {
+    this.http.get<Country[]>(this.BASE_URL).pipe(
+      tap((fetchedCountries) => {
+        this.saveCountries(fetchedCountries)
+        this.countriesSubject.next(fetchedCountries)
+      }),
+    ).subscribe(res => console.log('Fetched successfully'))
   }
 
   saveCountries(countries: Country[]) {
-    this.storage.save(this.COUNTRIES_KEY, countries)
+    this.storage.save(this.STORAGE_KEY, countries)
   }
 
-  reloadCountries() {
-    return this.storage.load(this.COUNTRIES_KEY)
+  deleteCountry(numericCode: string | number) {
+    const countriesToSave = this.getCountriesFromStorage().filter(savedCountry => {
+      return savedCountry.numericCode !== numericCode
+    })
+    const savedCountries = this.storage.save(this.STORAGE_KEY, countriesToSave)
+    this.countriesSubject.next(savedCountries)
+  }
+
+  getCountriesFromStorage() {
+    return this.storage.load(this.STORAGE_KEY)
   }
 }
