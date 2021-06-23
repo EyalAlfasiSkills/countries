@@ -9,10 +9,16 @@ import { UserService } from 'src/app/services/user-service/user.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
   ) { }
 
+  isLoggedIn: boolean = false
+
+
   ngOnInit(): void {
+    this.userService.isAuthenticated$.subscribe(isAuthenticated => {
+      this.isLoggedIn = isAuthenticated
+    })
   }
 
   onLogOut = () => {

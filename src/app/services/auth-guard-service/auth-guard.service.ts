@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../auth-service/auth.service';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { UserService } from '../user-service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +9,10 @@ import { AuthService } from '../auth-service/auth.service';
 export class AuthGuardService {
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private userService: UserService,
   ) { }
 
-  canActivate(): boolean {
-    if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['']);
-      return false;
-    }
-    return true;
+  canActivate(): Observable<boolean> {
+    return this.userService.isAuthenticated$.pipe(take(1));
   }
 }

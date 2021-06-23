@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
@@ -22,10 +21,14 @@ export class LoginPageComponent implements OnInit {
   errorTimeoutId: ReturnType<typeof setTimeout> | null = null
 
   ngOnInit(): void {
-
+    this.userService.isAuthenticated$.subscribe(isAuthenticated => {
+      if (isAuthenticated) {
+        this.router.navigate(['/countries']);
+      }
+    })
   }
 
-  onSubmit = (ev: any): void => {
+  onSubmit = (ev: Event): void => {
     ev.preventDefault()
     this.validateEmail()
   }
@@ -34,7 +37,6 @@ export class LoginPageComponent implements OnInit {
     const { email } = this
     if (email === this.correctEmail) {
       this.userService.logIn(email)
-      this.router.navigate(['/countries']);
       return
     }
     else if (!email) {
@@ -55,7 +57,4 @@ export class LoginPageComponent implements OnInit {
       this.errorMsg = ''
     }, 3000);
   }
-
-
-
 }

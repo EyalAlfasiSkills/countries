@@ -1,4 +1,4 @@
 <Header class="app-header header-layout">
   <h2 class="logo">Countries</h2>
-  <button (click)="onLogOut()">Log out</button>
+  <button *ngIf="isLoggedIn" (click)="onLogOut()">Log out</button>
 </Header>
