@@ -11,11 +11,12 @@ export class UserService {
     private storage: StorageService<string>,
   ) {
   }
+  
+  private STORAGE_KEY = 'LOGGED_IN_USER';
 
   private isAuthenticatedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable()
 
-  private STORAGE_KEY = 'LOGGED_IN_USER';
 
   logIn(email: string) {
     this.storage.save(this.STORAGE_KEY, email)

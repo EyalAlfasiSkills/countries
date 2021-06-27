@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div id="map" class="map-container"></div>
+  <button class="directions-btn" (click)="onDisplayRoute()">
+    <img src="../../../assets/img/home.svg" alt="home icon" />
+  </button>
+</div>
+<div class="controlles-wrapper main-layout">
+  <input type="text" id="autocomplete" class="custom-input autocomplete" />
+  <div *ngIf="isRouteControllesShown && currentRoute" class="route-info">
+    <h3>Instructions:</h3>
+    <select value="travelMode" [(ngModel)]="travelMode" (ngModelChange)="onTravelModeChange()">
+      <option *ngFor="let mode of travelOptions" [value]="mode">
+        {{ mode }}
+      </option>
+    </select>
+    <div class="instructions">
+      <ul>
+        <li
+          *ngFor="let step of currentRoute.steps"
+          [innerHTML]="step.instructions"
+        ></li>
+      </ul>
+    </div>
+  </div>
+</div>
