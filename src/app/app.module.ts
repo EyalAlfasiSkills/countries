@@ -9,7 +9,8 @@ import { CountryPreviewComponent } from './components/country-preview/country-pr
 import { CountriesPageComponent } from './pages/countries-page/countries-page.component';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { FavoriteCountriesComponent } from './pages/favorite-countries-page/favorite-countries/favorite-countries.component';
+import { FavoriteCountriesComponent } from './pages/favorite-countries-page/favorite-countries.component';
+import { MapPageComponent } from './pages/map-page/map-page.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FavoriteCountriesComponent } from './pages/favorite-countries-page/favo
     CountriesPageComponent,
     LoginPageComponent,
     FavoriteCountriesComponent,
+    MapPageComponent,
   ],
   imports: [
     BrowserModule,

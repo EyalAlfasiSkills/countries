@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { StorageService } from '../storage-service/storage.service';
 import { Country } from './country';
-import { take, tap } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,19 @@ export class CountryService {
 
   fetchCountries() {
     this.http.get<Country[]>(this.BASE_URL).pipe(
+      map(countries => {
+        const newCountries = countries.map(country => {
+          const [lat, lng] = country.latlng
+          return {
+            ...country,
+            latlng: {
+              lat,
+              lng
+            }
+          }
+        })
+        return newCountries
+      }),
       tap((fetchedCountries) => {
         this.saveCountries(fetchedCountries)
         this.countriesSubject.next(fetchedCountries)

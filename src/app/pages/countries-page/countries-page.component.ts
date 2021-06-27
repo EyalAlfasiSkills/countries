@@ -30,6 +30,7 @@ export class CountriesPageComponent implements OnInit {
     this.countryService.loadCountries()
     this.countryService.countries$
       .subscribe(countries => {
+        console.log(countries);
         this.countries = countries;
       }, (err) => {
         console.log('Couldn\'t fetch countries' + err);
